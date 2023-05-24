@@ -18,7 +18,7 @@ node {
         sudo docker exec my_script_container python /app/script.py
         sudo docker cp my_script_container:/app/system_info.txt $WORKSPACE
         ls -ltR
-        aws s3 cp $WORKSPACE/system_info.txt arn:aws:s3:::avivkaufman
+        aws s3 cp $WORKSPACE/system_info.txt s3://avivkaufman/system_info.txt
     """
   }       
 }
