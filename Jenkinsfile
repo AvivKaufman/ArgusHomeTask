@@ -1,10 +1,3 @@
-def clean_docker() {
-    sh """
-        docker images && docker ps -a
-        docker system prune -a -f --volumes
-        docker rm -f \$(docker ps -aq)
-        docker images && docker ps -a
-    """
 node {
   stage('Build & Deploy') {
     deleteDir()
@@ -13,8 +6,7 @@ node {
         docker system prune -a -f --volumes
         docker rm -f \$(docker ps -aq)
         docker images && docker ps -a
-    """    
-    clean_docker()
+    """
     checkout scmGit(
     branches: [[name: "${BRANCH}"]],
     userRemoteConfigs: [[credentialsId:  '94339b6c-d33d-4ef9-8d2a-6b131153c69c',
