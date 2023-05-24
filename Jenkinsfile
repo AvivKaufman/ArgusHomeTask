@@ -3,7 +3,6 @@ node {
     sh """
         sudo docker rm -f my_script_container || true
         sudo docker image rm -f my_script_image || true
-        ls -ltR
     """    
     deleteDir()
     checkout scmGit(
@@ -12,7 +11,6 @@ node {
         url: 'git@github.com:AvivKaufman/ArgusHomeTask.git']]) 
     sh """
         chmod 755 -R $WORKSPACE
-        ls -ltR
         sudo docker build -t my_script_image .
         sudo docker image ls
         sudo docker run -d --name my_script_container my_script_image
@@ -20,6 +18,7 @@ node {
         sudo docker exec my_script_container python /app/script.py
         sudo docker cp my_script_container:/app/system_info.txt $WORKSPACE
         ls -ltR
+        aws s3 cp $WORKSPACE/system_info.txt arn:aws:s3:::avivkaufman
     """
   }       
 }
