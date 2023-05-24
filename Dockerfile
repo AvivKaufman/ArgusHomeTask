@@ -12,4 +12,4 @@ COPY script.py .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the Python script when the container starts
-CMD [ "python", "script.py" ]
+CMD [ "sleep", "10000" ]
