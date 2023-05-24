@@ -7,7 +7,7 @@ node {
     sh """
         sudo docker build -t my_script_image .
         sudo docker image ls
-        sudo docker run -d my_script_image
+        sudo docker run -d --name my_script_container -v $WORKSPACE:/app my_script_image
         ls -ltR
     """
   }       
