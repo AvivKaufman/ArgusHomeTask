@@ -18,6 +18,7 @@ node {
         sudo docker run -d --name my_script_container my_script_image
         sudo docker exec my_script_container ls -ltr /app
         sudo docker exec my_script_container python /app/script.py
+        sudo docker cp my_script_container:/app/system_info.txt $WORKSPACE
         ls -ltR
     """
   }       
