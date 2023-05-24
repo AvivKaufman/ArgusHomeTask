@@ -3,6 +3,7 @@ node {
     deleteDir()
     sh """
         sudo docker rm -f my_script_container || true
+        sudo docker image rm -f my_script_image || true
     """
     checkout scmGit(
     branches: [[name: "${BRANCH}"]],
