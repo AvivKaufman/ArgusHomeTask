@@ -1,7 +1,3 @@
-String branchName = env.BRANCH_NAME
-String gitCredentials = "CREDENTIAL_ID"
-String repoUrl = "https://github.com/username/repo-name.git"
-
 node {
   stage('Clone') {
     checkout scmGit(
