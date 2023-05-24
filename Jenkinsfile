@@ -11,6 +11,7 @@ node {
         url: 'git@github.com:AvivKaufman/ArgusHomeTask.git']]) 
     sh """
         chmod +x $WORKSPACE
+        ls -ltR
         sudo docker build -t my_script_image .
         sudo docker image ls
         sudo docker run --name my_script_container -v $WORKSPACE:/app my_script_image
