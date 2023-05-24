@@ -20,7 +20,7 @@ node {
         ls -ltR
     """
     withAWS(credentials: '10dcb875-ccbe-4bde-93ab-b43a425a70c8', region: "us-east-1") {
-        sh "sudo aws s3 cp $WORKSPACE/system_info.txt s3://avivkaufman/system_info.txt"
+        s3Upload acl: 'Private', bucket: 'avivkaufman', file: 'system_info.txt'
     }
   }       
 }
