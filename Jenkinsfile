@@ -11,12 +11,12 @@ node {
     userRemoteConfigs: [[credentialsId:  '94339b6c-d33d-4ef9-8d2a-6b131153c69c',
         url: 'git@github.com:AvivKaufman/ArgusHomeTask.git']]) 
     sh """
-        chmod -R $WORKSPACE 755
+        chmod 755 -R $WORKSPACE
         ls -ltR
         sudo docker build -t my_script_image .
         sudo docker image ls
-        sudo docker run -d --name my_script_container -v $WORKSPACE:/app my_script_image
-        sudo docker exec my_script_container python /app/script.py
+        sudo docker run -d --name my_script_container
+        sudo docker exec my_script_container ls -ltr /app
         ls -ltR
     """
   }       
