@@ -22,7 +22,7 @@ node {
     withAWS(credentials: '10dcb875-ccbe-4bde-93ab-b43a425a70c8', region: "us-east-1") {
         s3Upload acl: 'Private', bucket: 'avivkaufman', file: 'system_info.txt'
     }
-    docker.withRegistry('161192472568.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:10dcb875-ccbe-4bde-93ab-b43a425a70c8') {
+    docker.withRegistry('https://161192472568.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:10dcb875-ccbe-4bde-93ab-b43a425a70c8') {
         sh "docker tag avivkaufman:latest 161192472568.dkr.ecr.us-east-1.amazonaws.com/avivkaufman:latest"
         sh "docker push 161192472568.dkr.ecr.us-east-1.amazonaws.com/avivkaufman:latest"
     }
