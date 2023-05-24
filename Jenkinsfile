@@ -1,7 +1,7 @@
 node {
   stage('Clone') {
     checkout scmGit(
-    branches: [[name: "${BRANCH}"]],
+    branches: [[name: "Testing"]],
     userRemoteConfigs: [[credentialsId:  'kaufman905@gmail.com',
         url: 'git@github.com:AvivKaufman/ArgusHomeTask.git']]) 
   }       
