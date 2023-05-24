@@ -25,5 +25,12 @@ node {
         sh "sudo docker tag avivkaufman:latest 161192472568.dkr.ecr.us-east-1.amazonaws.com/avivkaufman:latest"
         sh "sudo docker push 161192472568.dkr.ecr.us-east-1.amazonaws.com/avivkaufman:latest"
     }
-  }       
+  }
+
+  stage('Pull & Test') {
+    withAWS(credentials: '10dcb875-ccbe-4bde-93ab-b43a425a70c8', region: "us-east-1") {
+        s3Download(file: 'system_info_from_bucket.txt', bucket: 'avivkaufman', path: 'system_info.txt')
+      }
+    sh "ls -ltr"
+  } 
 }
