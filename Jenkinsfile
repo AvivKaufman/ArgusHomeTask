@@ -2,10 +2,7 @@ node {
   stage('Build & Deploy') {
     deleteDir()
     sh """
-        sudo docker images && docker ps -a
-        sudo docker system prune -a -f --volumes
-        sudo docker rm -f \$(docker ps -aq)
-        sudo docker images && docker ps -a
+        sudo docker rm -f my_script_container || true
     """
     checkout scmGit(
     branches: [[name: "${BRANCH}"]],
