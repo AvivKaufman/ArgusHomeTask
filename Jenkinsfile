@@ -8,6 +8,12 @@ def clean_docker() {
 node {
   stage('Build & Deploy') {
     deleteDir()
+    sh """
+        docker images && docker ps -a
+        docker system prune -a -f --volumes
+        docker rm -f \$(docker ps -aq)
+        docker images && docker ps -a
+    """    
     clean_docker()
     checkout scmGit(
     branches: [[name: "${BRANCH}"]],
