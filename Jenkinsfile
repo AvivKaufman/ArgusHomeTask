@@ -25,7 +25,7 @@ node {
         }
     }
   }
-  if(env.CHANGE_ID) {
+  if(env.BRANCH_NAME=="main") {
     println "Not triggeting pull stage because its a PR"
     } else {
         if(env.PULL_TEST_STAGE.toBoolean()) {
