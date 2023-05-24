@@ -15,7 +15,7 @@ node {
         ls -ltR
         sudo docker build -t my_script_image .
         sudo docker image ls
-        sudo docker run -d --name my_script_container
+        sudo docker run -d --name my_script_container my_script_image
         sudo docker exec my_script_container ls -ltr /app
         ls -ltR
     """
