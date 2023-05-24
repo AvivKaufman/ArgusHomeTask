@@ -18,7 +18,9 @@ node {
         sudo docker exec my_script_container python /app/script.py
         sudo docker cp my_script_container:/app/system_info.txt $WORKSPACE
         ls -ltR
-        sudo aws s3 cp $WORKSPACE/system_info.txt s3://avivkaufman/system_info.txt
     """
+    withAWS(credentials: '10dcb875-ccbe-4bde-93ab-b43a425a70c8', region: "us-east-1") {
+        sh "sudo aws s3 cp $WORKSPACE/system_info.txt s3://avivkaufman/system_info.txt"
+    }
   }       
 }
